@@ -71,10 +71,7 @@ include "../config/db.php";
       <!-- end header -->
       <!-- end banner -->
      <!-- coronata -->
-      <div class="coronata">
-         <div class="container">
-            <div class="row">
-            <div class="col-lg-2 col-md-3 col-sm-3">
+     <div class="col-lg-2 col-md-3 col-sm-3">
                 <aside>
                   <br>
                   <br>
@@ -83,6 +80,8 @@ include "../config/db.php";
                     <a href="alldetails.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">All Patient Details</span></a>
                     <br>
                     <a href="hospital.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Registered Hospitals</span></a>
+                    <br>
+                    <a href="p_hosp.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Hospitals Requests</span></a>
                     <br>
                     <a href="reports.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
@@ -254,13 +253,3 @@ include "../config/db.php";
       <script src="../js/custom.js"></script>
    </body>
 </html>
-<script>
-
-document.ready(function){
-$('.status').change(function(){
-    var id = $(this).attr('id');
-    var slected_status = $(this).find(":selected").val();
-
-});
-}
-</script>

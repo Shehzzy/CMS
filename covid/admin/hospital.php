@@ -90,6 +90,8 @@ include '../config/db.php';
                     <br>
                     <a href="hospital.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Registered Hospitals</span></a>
                     <br>
+                    <a href="p_hosp.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Hospitals Requests</span></a>
+                    <br>
                     <a href="reports.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
                     <a href="vaccine.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Vaccine List</span></a>
@@ -119,6 +121,7 @@ include '../config/db.php';
       <th>Address</th>
       <th>Contact Info</th>
       <th>City</th>
+      <th>Status</th>
 
 
     </tr>
@@ -126,7 +129,7 @@ include '../config/db.php';
   <tbody>
    <?php
    include '../config/db.php';
-   $query="SELECT * from `hospital`";
+   $query="SELECT * from `hospital` where `status`=1";
 
    $result=mysqli_query($conn,$query );
    while($row=mysqli_fetch_assoc($result)){
@@ -138,6 +141,19 @@ include '../config/db.php';
    <td><?php echo $row['address'];?></td>
    <td><?php echo $row['cont_number'];?></td>
    <td><?php echo $row['city'];?></td>
+   <td>
+                     <?php
+                  if ($row['status'] == 0) {
+                     echo "<span class='badge badge-warning'>Pending</span>";
+
+                  } else if ($row['status'] == 1) {
+                     echo "<span class='badge badge-success'>Approved</span>";
+                  } else if ($row['status'] == 2) {
+                     echo "<span class='badge badge-danger'>Rejected</span>";
+                  }
+               
+                  ?> 
+               </td> 
 
 
 

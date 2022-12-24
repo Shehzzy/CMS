@@ -80,7 +80,7 @@ include '../config/db.php';
                <!-- SIDE PANEL START  -->
 
 
-            <div class="col-lg-2 col-md-3 col-sm-3">
+               <div class="col-lg-2 col-md-3 col-sm-3">
                 <aside>
                   <br>
                   <br>
@@ -89,6 +89,8 @@ include '../config/db.php';
                     <a href="alldetails.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">All Patient Details</span></a>
                     <br>
                     <a href="hospital.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Registered Hospitals</span></a>
+                    <br>
+                    <a href="p_hosp.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Hospitals Requests</span></a>
                     <br>
                     <a href="reports.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
@@ -196,7 +198,18 @@ include '../config/db.php';
                   ?></td>
    <td><?php echo $row['selected_date'];?></td>
    <td><?php echo $row['selected_time'];?></td>
-   <td><?php echo $row['status'];?></td>
+   <td>
+                     <?php
+                  if ($row['status'] == 0) {
+                     echo "<span class='badge badge-warning'>Pending</span>";
+
+                  } else if ($row['status'] == 1) {
+                     echo "<span class='badge badge-success'>Approved</span>";
+                  } else if ($row['status'] == 2) {
+                     echo "<span class='badge badge-danger'>Rejected</span>";
+                  }
+                  ?> 
+               </td> 
 
 
 

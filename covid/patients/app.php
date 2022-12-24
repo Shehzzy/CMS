@@ -284,13 +284,3 @@ include "../config/db.php";
       <script src="../js/custom.js"></script>
    </body>
 </html>
-<script>
-
-document.ready(function){
-$('.status').change(function(){
-    var id = $(this).attr('id');
-    var slected_status = $(this).find(":selected").val();
-
-});
-}
-</script>

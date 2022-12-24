@@ -150,7 +150,11 @@ include '../config/db.php';
       </form>
   
    </td>
-   <td><button type="submit" class="btn btn-danger" name="reject">Reject</button> 
+   <td>
+   <form  method="post">
+         <input type="hidden" name="reject_id" value="<?php echo $row['id'];?>">
+         <button type="submit" name="reject" class="btn btn-danger">Reject</button>
+      </form>
 </td>
 
 
@@ -259,3 +263,26 @@ include '../config/db.php';
        }
    }
    ?>
+
+<?php
+
+   
+if(isset($_POST['reject'])){
+
+    $query = "UPDATE `bookings` SET `status`=2 WHERE `id`=".$_POST['reject_id'];
+    $result=mysqli_query($conn,$query);
+    if($result){
+        echo "<script>
+        alert('This Appintment Status Has been rejected!');
+        window.location='../hospital/p_details.php';
+        </script>   
+        ";
+    }
+    else{
+        echo "<script>
+        alert('This Appintment Status Has not  been Changed!');
+        window.location='../hospital/p_details.php';
+        </script>";
+    }
+}
+?>

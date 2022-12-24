@@ -78,25 +78,26 @@ session_start();
 
                <!-- ASIDE PANEL START -->
 
-            <div class="col-lg-2 col-md-2 col-sm-2">
+               <div class="col-lg-2 col-md-3 col-sm-3">
                 <aside>
                   <br>
                   <br>
                   <a href="profile.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My Profile</span></a>
                   <br>
-                  <a href="app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My appoinments</span></a>
+                    <a href="p_details.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">Pending appoinments</span></a>
                     <br>
-                    <a href="b_app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Book an appoinment</span></a>
+                    <a href="rejected.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Rejected Appoinments</span></a>
                     <br>
-                    <a href="test_request.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Request a Covid test</span></a>
+                    <a href="p_history.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Appoinment History</span></a>
+                    <br>
+                    <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Request vaccination</span></a>
                     <br>
                     <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Results</span></a>
                     <br>
                     <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
-                    <br>
                     <a href="../h_action/h_out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
-                    <br>
+
                 </aside>
             </div>
 
@@ -114,10 +115,10 @@ session_start();
                <h4>Information</h4>
                <br>
                <h6 class="font-weight-bold">HOSPITAL ID</h6>
-               <p><?php echo $_SESSION['id']; ?></p>
+               <p><?php echo $_SESSION  ['hos_id']; ?></p>
                <br>
               <?php
-              $id = $_SESSION['id'];
+              $id = $_SESSION['hos_id'];
               include '../config/db.php';
               $query = "SELECT * FROM `hospital` WHERE id =$id";
               $result=mysqli_query($conn,$query);
@@ -138,8 +139,8 @@ session_start();
                <h6 class="font-weight-bold">CITY</h6>
                <p><?php echo $row['city']; ?></p>
                <br>
-               <a href="update_form.php?user_id=<?php echo $_SESSION['id'];?>"><button class="btn btn-success">Update</button></a>
-               <a href="../p_action/d_user.php?user_id=<?php echo $_SESSION['id'];?>"><button class="btn btn-danger">Delete</button></a>
+               <a href="update_form.php?user_id=<?php echo $_SESSION['hos_id'];?>"><button class="btn btn-success">Update</button></a>
+               <a href="../p_action/d_user.php?user_id=<?php echo $_SESSION['hos_id'];?>"><button class="btn btn-danger">Delete</button></a>
 
                <?php
               }

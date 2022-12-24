@@ -291,13 +291,3 @@ while ($row = mysqli_fetch_assoc($result)) {
       <script src="../js/custom.js"></script>
    </body>
 </html>
-<script>
-
-document.ready(function){
-$('.status').change(function(){
-    var id = $(this).attr('id');
-    var slected_status = $(this).find(":selected").val();
-
-});
-}
-</script>

@@ -1,9 +1,7 @@
-<?php 
+<?php
 session_start();
 include '../config/db.php';
-$query = "SELECT * FROM `vaccine` where `Id`=". $_GET['user_id'];
-$result=mysqli_query($conn,$query);
-$row=mysqli_fetch_assoc($result);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,34 +106,70 @@ $row=mysqli_fetch_assoc($result);
             </div>
              <!-- SIDE PANEL END  -->
 
-            <div class="col-lg-8 col-md-8 col-sm-10 ml-5">
-               <h2 class="text-uppercase">Set Availability</h2>
+            <div class="col-lg-10 col-md-10 col-sm-10">
+               <h2 class="text-uppercase">Hospital Requests</h2>
                <br>
                <br>
-               <form action="v_uform.php" method="post">
-              
-               <div class="form-group">
-         <div class="form-group">
-         <label for="avail">Set Availability</label>
-         <input type="hidden" class="form-control"  value="<?php echo $_GET['user_id'];?>" name="user_id">
-
-         <input type="text" class="form-control" value="<?php echo $row['Id'];?>" id="num" name="avail">
-         </div>
-         <div class="text-center text-white">
-  <button type="submit" class="btn btn-danger mt-5 mb-5" name="update">Update</button>
-  </div>
-  
+               <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th> Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Contact</th>
+      <th>City</th>
+      <th>Status</th>
+      <th>Status</th>
 
 
-
-
-
+      
+    </tr>
+  </thead>
+  <tbody>
+   <?php
    
+   include '../config/db.php';
+   $query="SELECT * FROM `hospital` WHERE `status`=0";
 
-               </form>
+   $result=mysqli_query($conn,$query );
+   while($row=mysqli_fetch_assoc($result)){
+   ?>
+   <tr>
+   <td><?php echo $row['id'];?></td>
+   <td><?php echo $row['name'];?></td>
+   <td><?php echo $row['email'];?></td>
+   <td><?php echo $row['address'];?></td>
+   <td><?php echo $row['cont_number'];?></td>
+   <td><?php echo $row['city'];?></td>
+   
+   <td>
+      <form  method="post">
+         <input type="hidden" name="appointment_id" value="<?php echo $row['id'];?>">
+         <button type="submit" name="approve" class="btn btn-success">Approve</button>
+      </form>
+  
+   </td>
+   <td>
+   <form  method="post">
+         <input type="hidden" name="reject_id" value="<?php echo $row['id'];?>">
+         <button type="submit" name="reject" class="btn btn-danger">Reject</button>
+      </form>
+</td>
+
+ 
+
+   </tr>
+   <?php 
+      }
+   ?>
+  </tbody>
+</table>
 
             </div>
                </div>
+            </div>
+      </div>
       
       <!-- end coronata -->
       
@@ -166,7 +200,7 @@ $row=mysqli_fetch_assoc($result);
                         <div class="col-lg-3 col-md-6 col-sm-6">
                            <div class="hedingh3  text_align_left">
                               <h3>Contact  Us</h3>
-                              <ul class="top_infomation">
+                              <ul class="   top_infomation">
                                 <li><i class="fa fa-map-marker" aria-hidden="true"></i>
                                 Making this the first true</li>
                                 <li><i class="fa fa-phone" aria-hidden="true"></i>
@@ -206,3 +240,47 @@ $row=mysqli_fetch_assoc($result);
       <script src="../js/custom.js"></script>
    </body>
 </html>
+<?php
+
+   
+   if(isset($_POST['approve'])){
+       $query = "UPDATE `hospital` SET `status`=1 WHERE `id`=".$_POST['appointment_id'];
+       $result=mysqli_query($conn,$query);
+       if($result){
+           echo "<script>
+           alert('This Appintment Status Has been Changed!');
+           window.location='p_hosp.php';    
+           </script>   
+           ";
+       }
+       else{
+           echo "<script>
+           alert('This Appintment Status Has not  been Changed!');
+           window.location='p_hosp.php';
+           </script>";
+       }
+   }
+   ?>
+
+<?php
+
+   
+if(isset($_POST['reject'])){
+
+    $query = "UPDATE `hospital` SET `status`=2 WHERE `id`=".$_POST['reject_id'];
+    $result=mysqli_query($conn,$query);
+    if($result){
+        echo "<script>
+        alert('This Appintment Status Has been Changed!');
+        window.location='p_hosp.php';
+        </script>   
+        ";
+    }
+    else{
+        echo "<script>
+        alert('This Appintment Status Has not  been Changed!');
+        window.location='p_hosp.php';
+        </script>";
+    }
+}
+?>
