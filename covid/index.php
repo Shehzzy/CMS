@@ -33,9 +33,9 @@
    <body class="main-layout">
       <!-- top -->
                     <!-- header -->
-         <header class="header-area">
+                    <header class="header-area">
          <div class="left">
-               <a href=""><i class="fa fa-search" aria-hidden="true"></i></a>
+         <img src="images/covid.png" alt="#"/>
             </div>
             <div class="right">
                <a href="u_page.php"><i class="fa fa-user" aria-hidden="true"></i></a>
@@ -323,65 +323,11 @@ Wash reusable masks after each use.</span>
       <footer>
          <div class="footer">
             <div class="container">
-               <div class="row">
-                        <div class="col-lg-2 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                              <h3>Resources</h3>
-                              <ul class="menu_footer">
-                                 <li><a href="index.php">Home</a><li>
-                                 <li><a href="">What we do</a><li>
-                                 <li> <a href="">Media</a><li>
-                                 <li> <a href="">Travel Advice</a><li>
-                                 <li><a href="">Protection</a><li>
-                                 <li><a href="">Care</a><li>
-                              </ul>
-                             
-           
-                           </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                             <h3>About</h3>
-                              <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various</p>
-                           </div>
-                        </div>
-                     
-                
+               <div style="text-align: center:">
                        
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3  text_align_left">
-                              <h3>Contact  Us</h3>
-                                <ul class="top_infomation">
-                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>
-                           Making this the first true  
-                        </li>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i>
-                           Call : +01 1234567890
-                        </li>
-                        <li><i class="fa fa-envelope" aria-hidden="true"></i>
-                           <a href="">Email : demo@gmail.com</a>
-                        </li>
-                     </ul>
-                            
-                           
-                     </div>
-                  </div>
-                     <div class="col-lg-4 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                              <h3>countrys</h3>
-                              <div class="map">
-                                <img src="images/map.png" alt="#"/>
-                              </div>
-                           </div>
-                        </div>
-                    
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-8 offset-md-2">
-                        <p>© 2020 All Rights Reserved. Design by <a href="https://html.design/"> Free html Templates</a></p>
+                     
+                        <p><center>© 2020 All Rights Reserved.</center></p>
+                        <br>  
                      </div>
                   </div>
                </div>
