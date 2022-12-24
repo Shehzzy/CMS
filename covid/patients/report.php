@@ -36,12 +36,12 @@ include "../config/db.php";
    <body class="main-layout inner_page">
       <!-- top -->
       <!-- header -->
-         <header class="header-area">
-            <div class="left">
-               <a href=""><i class="fa fa-search" aria-hidden="true"></i></a>
+      <header class="header-area">
+         <div class="left">
+         <img src="../images/covid.png" alt="#"/>
             </div>
             <div class="right">
-               <a href="../u_page.php"><i class="fa fa-user" aria-hidden="true"></i></a>
+               <a href="u_page.php"><i class="fa fa-user" aria-hidden="true"></i></a>
             </div>
             <div class="container">
                <div class="row d_flex">
@@ -54,7 +54,7 @@ include "../config/db.php";
                      <div class="navbar-area">
                         <nav class="site-navbar">
                         <ul>
-                              <li><a class="active" href="index.php">Home</a></li>
+                              <li><a class="active " href="../index.php">Home</a></li>
                               <li><a href="about.php">Hospitals</a></li>
                               <li><a href="action.php">Appointments</a></li>
                               <!-- <li><a href="index.php" class="logo_midle">covido</a></li> -->
@@ -84,11 +84,10 @@ include "../config/db.php";
                     <br>
                     <a href="b_app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Book an appoinment</span></a>
                     <br>
-                    <a href="test_request.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Book For Covid test</span></a>
+                   
+                    <a href="result.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Results</span></a>
                     <br>
-                    <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Results</span></a>
-                    <br>
-                    <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
+                    <a href="report.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
                 </aside>
             </div>
