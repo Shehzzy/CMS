@@ -172,7 +172,7 @@ session_start();
                <div style="text-align: center:">
                        
                      
-                        <p><center>© 2020 All Rights Reserved.</center></p>
+               <center><p> 2020 All Rights Reserved.</p></center>
                         <br>  
                      </div>
                   </div>
