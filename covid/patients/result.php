@@ -102,7 +102,7 @@ include "../config/db.php";
                <br>
                <?php
 include "../config/db.php";
-$id=$_GET['user_id'];
+$id=$_SESSION['id'];
 $query="SELECT patients.id,hospital.id,vaccine.Id,bookings.* FROM `bookings` 
 INNER JOIN patients ON bookings.p_id=patients.id
 INNER JOIN vaccine ON bookings.v_id=vaccine.Id

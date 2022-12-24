@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../config/db.php';
 
 ?>
 <!DOCTYPE html>
@@ -12,16 +13,16 @@ session_start();
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Login as a hospital</title>
+      <title>Users</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- bootstrap css -->
       <link rel="stylesheet" href="../css/bootstrap.min.css">
       <!-- style css -->
-      <link rel="stylesheet" href="../css/u.css">
+      <link rel="stylesheet" href="../css/app.css">
       <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="../css/responsive.css">
       <!-- fevicon -->
       <link rel="icon" href="images/fevicon.png" type="image/gif"/>
       <!-- Scrollbar Custom CSS -->
@@ -29,6 +30,8 @@ session_start();
        <link rel="stylesheet" href="css/owl.carousel.min.css"> 
       <link rel="stylesheet" href="ttps://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+      <script src="https://kit.fontawesome.com/aec557161b.js" crossorigin="anonymous"></script>
+
    </head>
    <!-- body -->
    <body class="main-layout inner_page">
@@ -51,14 +54,14 @@ session_start();
                   <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-9">
                      <div class="navbar-area">
                         <nav class="site-navbar">
-                           <ul>
-                              <li><a href="../index.php">Home</a></li>
-                              <li><a href="../about.php">About</a></li>
-                              <li><a href="../action.php">take action</a></li>
+                        <ul>
+                              <li><a class="active" href="index.php">Home</a></li>
+                              <li><a href="about.php">Hospitals</a></li>
+                              <li><a href="action.php">Appointments</a></li>
                               <!-- <li><a href="index.php" class="logo_midle">covido</a></li> -->
-                              <li><a  href="../news.php">news</a></li>
-                              <li><a href="../doctores.php">doctores</a></li>
-                              <li><a href="../contact.php">Contact </a></li>
+                              <li><a href="news.php">news</a></li>
+                              <li><a href="about.php">About</a></li>
+                              <li><a href="contact.php">Contact </a></li>
                            </ul>
                         </nav>
                      </div>
@@ -72,64 +75,104 @@ session_start();
       <div class="coronata">
          <div class="container">
             <div class="row">
-           <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
-            <div class="form">
-               <h4 class="mt-5 mb-5 text-center">Login to view your data</h4>
-            <form method="post">
-               <label for="email">Email</label>
-               <br>
-               <input type="email" name="l_email" id="email" required>
-               <br>
-               <label for="password">Password</label>
-               <br>
-               <input type="password" name="l_pass" id="pass" required>
-               <br>
-               <div class="text-center">
-               <button type="submit" class="btn btn-danger" name='login'>Continue</button>
-               </div>
-              </form>
+
+
+               <!-- SIDE PANEL START  -->
+
+
+            <div class="col-lg-2 col-md-3 col-sm-3">
+                <aside>
+                  <br>
+                  <br>
+                  <a href="profile.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My Profile</span></a>
+                  <br>
+                    <a href="p_details.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">Pending appoinments</span></a>
+                    <br>
+                    <a href="rejected.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Rejected Appoinments</span></a>
+                    <br>
+                    <a href="p_history.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Appoinment History</span></a>
+                    <br>
+                    <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Request vaccination</span></a>
+                    <br>
+                    <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Results</span></a>
+                    <br>
+                    <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
+                    <br>
+                    <a href="../h_action/h_out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
+
+                </aside>
             </div>
-           </div>
-  </div>
-      </div>
+             <!-- SIDE PANEL END  -->
+
+            <div class="col-lg-10 col-md-10 col-sm-10">
+               <h2 class="text-uppercase">Rejected Appoinments</h2>
+               <br>
+               <br>
+               <h4>HOSPITAL ID<?php echo $_SESSION['hos_id'];?></h4>
+               <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th> Name</th>
+      <th>Email</th>
+      <th>Contact</th>
+      <th>Vaccine</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+   <?php
+   $id=$_SESSION['hos_id'];
+   
+   include '../config/db.php';
+   $query="SELECT patients.id,vaccine.Id,bookings.* FROM `bookings` INNER JOIN patients ON bookings.p_id=patients.id INNER JOIN vaccine ON bookings.v_id=vaccine.Id WHERE hos_id=$id and bookings.status=2";
+
+   $result=mysqli_query($conn,$query );
+   while($row=mysqli_fetch_assoc($result)){
+   ?>
+   <tr>
+   <td><?php echo $row['id'];?></td>
+   <td><?php echo $row['P_name'];?></td>
+   <td><?php echo $row['email'];?></td>
+   <td><?php echo $row['number'];?></td>
+   <td><?php echo $row['v_id'];?></td>
+   <td><?php echo $row['selected_date'];?></td>
+   <td><?php echo $row['selected_time'];?></td>
+   
+   <td>
+    <?php
+     if ($row['status'] == 0) {
+        echo "<span class='badge badge-warning'>Pending</span>";
+
+     } else if ($row['status'] == 1) {
+        echo "<span class='badge badge-success'>Approved</span>";
+     } else if ($row['status'] == 2) {
+        echo "<span class='badge badge-danger'>Rejected</span>";
+     }
+    
+    
+    ?>
+</td>
+
+
+ 
+
+   </tr>
+   <?php 
+      }
+   ?>
+  </tbody>
+</table>
+
+            </div>
+               </div>
+            </div>
       </div>
       
       <!-- end coronata -->
-<?php
-
-if(isset($_POST['login'])){
-    $email=$_POST['l_email'];
-    $pass=$_POST['l_pass'];
-
-    include '../config/db.php';
-
-    $query="SELECT * FROM `hospital` WHERE `email`='$email' and `password`='$pass'";
-    $result=mysqli_query($conn,$query);
-         $count=mysqli_num_rows($result);
-    
-    if($count>0){
-      $row=mysqli_fetch_assoc($result);
-        $_SESSION['hos_id']=$row['id'];
-        echo "<script>
-        alert('Congratulation you have successfully login!');
-        window.location='profile.php';
-        </script>";
-    }
-    else{
-        echo "<script>
-        alert(' you are not logged in!');
-        window.location='h_login.php';
-        </script>";
-    }}
-
- ?>
-
-
-
-
-
-
-
+      
       <!--  footer -->
       <footer>
          <div class="footer">
@@ -197,3 +240,25 @@ if(isset($_POST['login'])){
       <script src="../js/custom.js"></script>
    </body>
 </html>
+<?php
+
+   
+   if(isset($_POST['approve'])){
+   
+       $query = "UPDATE `bookings` SET `status`=1 WHERE `id`=".$_POST['appointment_id'];
+       $result=mysqli_query($conn,$query);
+       if($result){
+           echo "<script>
+           alert('This Appintment Status Has been Changed!');
+           window.location='../hospital/p_details.php';
+           </script>   
+           ";
+       }
+       else{
+           echo "<script>
+           alert('This Appintment Status Has not  been Changed!');
+           window.location='../hospital/p_details.php';
+           </script>";
+       }
+   }
+   ?>

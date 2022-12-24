@@ -163,7 +163,7 @@ include "../config/db.php";
                   }
                   
                   ?></td>
-                  <td> <td><?php
+                  <td><?php
                   if($row['v_id']==1){
                      echo "Pfizer–BioNTech";
                   }
@@ -181,7 +181,7 @@ include "../config/db.php";
                  }
                  
                   
-                  ?></td></td>
+                  ?></td>
                   <td><?php echo $row['selected_date']; ?></td>
                   <td><?php echo $row['selected_time']; ?></td>
                   <td>
