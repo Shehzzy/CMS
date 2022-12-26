@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../config/db.php';
+include 'check.php';
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +14,8 @@ include '../config/db.php';
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Users</title>
+      <title>All vaccines</title>
+      <link rel="icon" href="../images/covid.png">
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -90,8 +92,6 @@ include '../config/db.php';
                     <br>
                     <a href="hospital.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Registered Hospitals</span></a>
                     <br>
-                    <a href="p_hosp.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Hospitals Requests</span></a>
-                    <br>
                     <a href="reports.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
                     <a href="vaccine.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Vaccine List</span></a>
@@ -100,7 +100,7 @@ include '../config/db.php';
                     <br>
                     <!-- <a href="reports.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br> -->
-                    <a href="../h_action/h_out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
+                    <a href="out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
 
                 </aside>
             </div>
@@ -168,7 +168,16 @@ include '../config/db.php';
       <footer>
          <div class="footer">
             <div class="container">
-               
+               <div style="text-align: center:">
+                       
+                     
+                        <p><center>&copy; 2020 All Rights Reserved.</center></p>
+                        <br>  
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../config/db.php';
+include 'check.php';
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +14,8 @@ include '../config/db.php';
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Users</title>
+      <title>Registered Hospitals</title>
+      <link rel="icon" href="../images/covid.png">
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -90,8 +92,6 @@ include '../config/db.php';
                     <br>
                     <a href="hospital.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Registered Hospitals</span></a>
                     <br>
-                    <a href="p_hosp.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Hospitals Requests</span></a>
-                    <br>
                     <a href="reports.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
                     <a href="vaccine.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Vaccine List</span></a>
@@ -100,7 +100,7 @@ include '../config/db.php';
                     <br>
                     <!-- <a href="reports.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br> -->
-                    <a href="../h_action/h_out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
+                    <a href="out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
 
                 </aside>
             </div>
@@ -182,54 +182,11 @@ include '../config/db.php';
       <footer>
          <div class="footer">
             <div class="container">
-               <div class="row">
-                        <div class="col-lg-2 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                              <h3>Resources</h3>
-                              <ul class="menu_footer">
-                                 <li><a href="../index.php">Home</a><li>
-                                 <li><a href="">What we do</a><li>
-                                 <li> <a href="">Media</a><li>
-                                 <li> <a href="">Travel Advice</a><li>
-                                 <li><a href="">Protection</a><li>
-                                 <li><a href="">Care</a><li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                             <h3>About</h3>
-                              <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various</p>
-                           </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3  text_align_left">
-                              <h3>Contact  Us</h3>
-                              <ul class="top_infomation">
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>
-                                Making this the first true</li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>
-                                Call : +01 1234567890 </li>
-                                <li><i class="fa fa-envelope" aria-hidden="true"></i>
-                                <a href="">Email : demo@gmail.com</a></li>
-                              </ul>  
-                           </div>
-                        </div>
-                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="hedingh3 text_align_left">
-                              <h3>countrys</h3>
-                           <div class="map">
-                              <img src="../images/map.png" alt="#"/>
-                           </div>
-                        </div>
-                     </div>
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-8 offset-md-2">
-                        <p>© 2020 All Rights Reserved. Design by <a href="https://html.design/"> Free html Templates</a></p>
+               <div style="text-align: center:">
+                       
+                     
+                        <p><center>&copy; 2020 All Rights Reserved.</center></p>
+                        <br>  
                      </div>
                   </div>
                </div>

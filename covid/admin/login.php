@@ -11,7 +11,8 @@ session_start();
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Users</title>
+      <title>LOGIN - ADMIN</title>
+      <link rel="icon" href="../images/covid.png">
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -81,11 +82,11 @@ session_start();
                <br>
                <label for="email">Email</label>
                <br>
-               <input type="email" name="email" id="email" required>
+               <input type="email" name="a_email" id="email" required>
                <br>
                <label for="password">Password</label>
                <br>
-               <input type="password" name="l_pass" id="pass" required>
+               <input type="password" name="a_pass" id="pass" required>
                <br>
                <div class="text-center">
                <button type="submit" class="btn btn-danger" name='login'>Continue</button>
@@ -104,8 +105,8 @@ session_start();
       <?php
 
 if(isset($_POST['login'])){
-    $email=$_POST['email'];
-    $pass=$_POST['l_pass'];
+    $email=$_POST['a_email'];
+    $pass=$_POST['a_pass'];
 
     include '../config/db.php';
 
@@ -116,6 +117,7 @@ if(isset($_POST['login'])){
     if($count>0){
       $row=mysqli_fetch_assoc($result);
         $_SESSION['id']=$row['id'];
+         $_SESSION['a_email'] = $row['email'];
         echo "<script>
         alert('Congratulation you have successfully login!');
         window.location='alldetails.php';
@@ -135,69 +137,14 @@ if(isset($_POST['login'])){
 
 
     <!-- update -->
-      <!--  footer -->
-      <footer>
+    <footer>
          <div class="footer">
             <div class="container">
-               <div class="row">
-                        <div class="col-lg-2 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                              <h3>Resources</h3>
-                              <ul class="menu_footer">
-                                 <li><a href="index.php">Home</a><li>
-                                 <li><a href="">What we do</a><li>
-                                 <li> <a href="">Media</a><li>
-                                 <li> <a href="">Travel Advice</a><li>
-                                 <li><a href="">Protection</a><li>
-                                 <li><a href="">Care</a><li>
-                              </ul>
-                             
-           
-                           </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                             <h3>About</h3>
-                              <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various</p>
-                           </div>
-                        </div>
-                     
-                
+               <div style="text-align: center:">
                        
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3  text_align_left">
-                              <h3>Contact  Us</h3>
-                                <ul class="top_infomation">
-                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>
-                           Making this the first true  
-                        </li>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i>
-                           Call : +01 1234567890
-                        </li>
-                        <li><i class="fa fa-envelope" aria-hidden="true"></i>
-                           <a href="">Email : demo@gmail.com</a>
-                        </li>
-                     </ul>
-                            
-                           
-                     </div>
-                  </div>
-                     <div class="col-lg-4 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                              <h3>countrys</h3>
-                              <div class="map">
-                                <img src="images/map.png" alt="#"/>
-                              </div>
-                           </div>
-                        </div>
-                    
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-8 offset-md-2">
-                        <p>© 2020 All Rights Reserved. Design by <a href="https://html.design/"> Free html Templates</a></p>
+                     
+                        <p><center>&copy; 2020 All Rights Reserved.</center></p>
+                        <br>  
                      </div>
                   </div>
                </div>

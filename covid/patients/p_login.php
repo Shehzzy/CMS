@@ -12,6 +12,8 @@ session_start();
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
       <title>Users</title>
+      <link rel="icon" href="../images/covid.png">
+
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -82,11 +84,11 @@ session_start();
                <br>
                <label for="email">Email</label>
                <br>
-               <input type="email" name="l_email" id="email" required>
+               <input type="email" name="p_email" id="email" required>
                <br>
                <label for="password">Password</label>
                <br>
-               <input type="password" name="l_pass" id="pass" required>
+               <input type="password" name="p_pass" id="pass" required>
                <br>
                <div class="text-center">
                <button type="submit" class="btn btn-danger" name='login'>Continue</button>
@@ -105,8 +107,8 @@ session_start();
       <?php
 
 if(isset($_POST['login'])){
-    $email=$_POST['l_email'];
-    $pass=$_POST['l_pass'];
+    $email=$_POST['p_email'];
+    $pass=$_POST['p_pass'];
 
     include '../config/db.php';
 
@@ -117,6 +119,7 @@ if(isset($_POST['login'])){
     if($count>0){
       $row=mysqli_fetch_assoc($result);
         $_SESSION['id']=$row['id'];
+        $_SESSION['p_email'] = $row['email'];
         echo "<script>
         alert('Congratulation you have successfully login!');
         window.location='profile.php';

@@ -1,7 +1,8 @@
 <?php 
 session_start();
 include '../config/db.php';
-$query = "SELECT * FROM `patients` where `id`=". $_GET['user_id'];
+include 'check.php';
+$query = "SELECT * FROM `hospital` where `id`=". $_GET['up_id'];
 $result=mysqli_query($conn,$query);
 $row=mysqli_fetch_assoc($result);
 ?>
@@ -15,7 +16,8 @@ $row=mysqli_fetch_assoc($result);
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Users</title>
+      <title>Update profile</title>
+      <link rel="icon" href="../images/covid.png">
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -83,24 +85,24 @@ $row=mysqli_fetch_assoc($result);
                <!-- SIDE PANEL START  -->
 
 
-            <div class="col-lg-2 col-md-3 col-sm-3">
+               <div class="col-lg-2 col-md-3 col-sm-3">
                 <aside>
                   <br>
                   <br>
                   <a href="profile.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My Profile</span></a>
                   <br>
-                    <a href="app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My appoinments</span></a>
+                    <a href="p_details.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">Pending appoinments</span></a>
                     <br>
-                    <a href="b_app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Book an appoinment</span></a>
+                    <a href="rejected.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Rejected Appoinments</span></a>
                     <br>
-                    <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Request a Covid test</span></a>
+                    <a href="p_history.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Appoinment History</span></a>
                     <br>
-                    <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Request vaccination</span></a>
+                    <a href="result.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Results</span></a>
                     <br>
-                    <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Results</span></a>
+                    <a href="report.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
-                    <a href="#" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
-                    <br>
+                    <a href="../h_action/h_out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
+
                 </aside>
             </div>
              <!-- SIDE PANEL END  -->
@@ -113,13 +115,9 @@ $row=mysqli_fetch_assoc($result);
               
                <div class="form-group">
          <label for="f_name">Hospital Name</label>
-         <input type="hidden" class="form-control"  value="<?php echo $_GET['user_id'];?>" name="user_id">
+         <input type="hidden" class="form-control"  value="<?php echo $_GET['up_id'];?>" name="user_id">
 
-         <input type="text" class="form-control"  value="<?php echo $row['f_name'];?>"  name="f_name">
-         </div>
-         <div class="form-group">
-         <label for="l_name">Last Name</label>
-         <input type="text" class="form-control" value="<?php echo $row['l_name'];?>" id="l_name" name="l_name">
+         <input type="text" class="form-control"  value="<?php echo $row['name'];?>"  name="f_name">
          </div>
          <div class="form-group">
          <label for="email">Email Address</label>
@@ -127,32 +125,15 @@ $row=mysqli_fetch_assoc($result);
          </div>
          <div class="form-group">
          <label for="pass">Password</label>
-         <input type="password" class="form-control"  id="pass" name="pass"value="<?php echo $row['pass'];?>">
-         </div>
-         <div class="form-group">
-         <label for="age">Age</label>
-         <input type="number" class="form-control" value="<?php echo $row['age'];?>" id="age" name="age">
-         </div>
-         <div class="form-group">
-         <label for="gender">Gender</label>
-         <br>
-         <select name="gender" id="gender">
-            <option value="">Select your Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-         </select>
-         </div>
-    <div class="form-group">
-         <label for="dob">Enter your Date of Birth</label>
-         <input type="date" class="form-control" value="<?php echo $row['dob'];?>" id="dob" name="dob">
+         <input type="password" class="form-control"  id="pass" name="pass"value="<?php echo $row['password'];?>">
          </div>
          <div class="form-group">
          <label for="address">Full Address</label>
          <input type="text" class="form-control" value="<?php echo $row['address'];?>" id="add" name="add">
          </div>
          <div class="form-group">
-         <label for="number">Mobile Number </label>
-         <input type="text" class="form-control" value="<?php echo $row['m_number'];?>" id="num" name="num">
+         <label for="number">Contact Number </label>
+         <input type="number" class="form-control" value="<?php echo $row['cont_number'];?>" id="num" name="num">
          </div>
          <div class="text-center text-white">
   <button type="submit" class="btn btn-danger mt-5 mb-5" name="update">Update</button>
@@ -172,58 +153,14 @@ $row=mysqli_fetch_assoc($result);
       
       <!-- end coronata -->
       
-      <!--  footer -->
       <footer>
          <div class="footer">
             <div class="container">
-               <div class="row">
-                        <div class="col-lg-2 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                              <h3>Resources</h3>
-                              <ul class="menu_footer">
-                                 <li><a href="../index.php">Home</a><li>
-                                 <li><a href="">What we do</a><li>
-                                 <li> <a href="">Media</a><li>
-                                 <li> <a href="">Travel Advice</a><li>
-                                 <li><a href="">Protection</a><li>
-                                 <li><a href="">Care</a><li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                             <h3>About</h3>
-                              <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various</p>
-                           </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3  text_align_left">
-                              <h3>Contact  Us</h3>
-                              <ul class="top_infomation">
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>
-                                Making this the first true</li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>
-                                Call : +01 1234567890 </li>
-                                <li><i class="fa fa-envelope" aria-hidden="true"></i>
-                                <a href="">Email : demo@gmail.com</a></li>
-                              </ul>  
-                           </div>
-                        </div>
-                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="hedingh3 text_align_left">
-                              <h3>countrys</h3>
-                           <div class="map">
-                              <img src="../images/map.png" alt="#"/>
-                           </div>
-                        </div>
-                     </div>
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-8 offset-md-2">
-                        <p>© 2020 All Rights Reserved. Design by <a href="https://html.design/"> Free html Templates</a></p>
+               <div style="text-align: center:">
+                       
+                     
+                        <p><center>&copy; 2020 All Rights Reserved.</center></p>
+                        <br>  
                      </div>
                   </div>
                </div>

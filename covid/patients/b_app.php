@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../config/db.php";
+include 'check.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,8 @@ include "../config/db.php";
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Users</title>
+      <title>Book An app</title>
+      <link rel="icon" href="../images/covid.png">
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">

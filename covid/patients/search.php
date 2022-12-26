@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'check.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,7 @@ session_start();
       <!-- site metas -->
       
    <title>Search Hospitals</title>
+   <link rel="icon" href="../images/covid.png">
    <!-- Including jQuery is required. -->
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
    <!-- Including our scripting file. -->

@@ -19,7 +19,7 @@ if (isset($_POST['search'])) {
    <!-- Creating unordered list items.
         Calling javascript function named as "fill" found in "script.js" file.
         By passing fetched result as parameter. -->
-   <li onclick='fill("<?php echo $Result['Name']; ?>")'>
+   <li onclick='fill("<?php echo $Result['Name'];?>")'>
    <a>
    <!-- Assigning searched result in "Search box" in "search.php" file. -->
        <?php echo $Result['name']; ?>

@@ -1,8 +1,7 @@
 <?php
 session_start();
-include '../config/db.php';
+include "../config/db.php";
 include 'check.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +13,7 @@ include 'check.php';
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Patient Details</title>
-      <link rel="icon" href="../images/covid.png">
+      <title>Result</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -39,12 +37,12 @@ include 'check.php';
    <body class="main-layout inner_page">
       <!-- top -->
       <!-- header -->
-         <header class="header-area">
-            <div class="left">
-               <a href=""><i class="fa fa-search" aria-hidden="true"></i></a>
+      <header class="header-area">
+         <div class="left">
+         <img src="../images/covid.png" alt="#"/>
             </div>
             <div class="right">
-               <a href="../u_page.php"><i class="fa fa-user" aria-hidden="true"></i></a>
+               <a href="u_page.php"><i class="fa fa-user" aria-hidden="true"></i></a>
             </div>
             <div class="container">
                <div class="row d_flex">
@@ -77,92 +75,140 @@ include 'check.php';
       <div class="coronata">
          <div class="container">
             <div class="row">
-
-
-               <!-- SIDE PANEL START  -->
-
-
-               <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="col-lg-2 col-md-3 col-sm-3">
                 <aside>
                   <br>
                   <br>
                   <a href="profile.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My Profile</span></a>
                   <br>
-                    <a href="p_details.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">Pending appoinments</span></a>
+                    <a href="app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My appoinments</span></a>
                     <br>
-                    <a href="rejected.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Rejected Appoinments</span></a>
+                    <a href="b_app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Book an appoinment</span></a>
                     <br>
-                    <a href="p_history.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Appoinment History</span></a>
-                    <br>
+                    
                     <a href="result.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Results</span></a>
                     <br>
                     <a href="report.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
-                    <a href="../h_action/h_out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
-
                 </aside>
             </div>
-             <!-- SIDE PANEL END  -->
-
             <div class="col-lg-10 col-md-10 col-sm-10">
-               <h2 class="text-uppercase">All Patient Details</h2>
+                <div class="text-center">
+               <h2 class="text-uppercase">RESULT</h2>
+               </div>
+               <br>
+               <h5><?php echo"PATIENT ID ".$_SESSION['hos_id'];?></h5>
                <br>
                <br>
-               <h4>HOSPITAL ID<?php echo $_SESSION['hos_id'];?></h4>
-               <table class="table table-bordered">
+               <?php
+include "../config/db.php";
+$id=$_SESSION['hos_id'];
+$query="SELECT patients.id,hospital.id,vaccine.Id,bookings.* FROM `bookings` 
+INNER JOIN patients ON bookings.p_id=patients.id
+INNER JOIN vaccine ON bookings.v_id=vaccine.Id
+INNER JOIN hospital ON bookings.hos_id=hospital.id WHERE hospital.id=$id";
+$result = mysqli_query($conn, $query);
+
+while ($row = mysqli_fetch_assoc($result)) {
+
+
+?>
+
+               <div class="card mb-5">
+  <!-- <img class="card-img-top" src="../images/profile.jpeg" alt="Profile Picture" height="10px"> -->
+  <div class="card-body">
+    <h4 class="card-title mt-4">Covid Test And Vaccination Management System</h4>
+    <hr>
+    <h3 class="mt-4">Certificate For Covid-19</h3>
+    <p class="card-text mt-4">
+     <?php echo " Name " . " " .$row['P_name']; ?>
+    </p>
+    <p class="card-text mt-4">
+     <?php echo "Mobile Number" . " " .$row['number']; ?>
+    </p>
+    <h6 class="mt-4">has been administered following <b>Covid 19 </b>Vaccine</h6>
+    <br>
+    <br>
+    <table class="table">
   <thead>
     <tr>
-      <th>ID</th>
-      <th> Name</th>
-      <th>Email</th>
-      <th>Contact</th>
-      <th>Vaccine</th>
+      <th>Vaccine Name</th>
+      <th>Dosages</th>
+      <th>Hospital</th>
       <th>Date</th>
-      <th>Time</th>
-      <th>Status</th>
-      <th>Status</th>
-      
     </tr>
   </thead>
   <tbody>
-   <?php
-   $id=$_SESSION['hos_id'];
-   
-   include '../config/db.php';
-   $query="SELECT patients.id,vaccine.Id,bookings.* FROM `bookings` INNER JOIN patients ON bookings.p_id=patients.id INNER JOIN vaccine ON bookings.v_id=vaccine.Id WHERE hos_id=$id and bookings.status=0";
+    <?php
 
-   $result=mysqli_query($conn,$query );
-   while($row=mysqli_fetch_assoc($result)){
-      
-   ?>
+
+    ?>
    <tr>
-   <td><?php echo $row['id'];?></td>
-   <td><?php echo $row['P_name'];?></td>
-   <td><?php echo $row['email'];?></td>
-   <td><?php echo $row['number'];?></td>
-   <td><?php echo $row['v_id'];?></td>
-   <td><?php echo $row['selected_date'];?></td>
-   <td><?php echo $row['selected_time'];?></td>
-   
-   <td>
-      <form  method="post">
-         <input type="hidden" name="appointment_id" value="<?php echo $row['id'];?>">
-         <button type="submit" name="approve" class="btn btn-success">Approve</button>
-      </form>
-  
-   </td>
-   <td>
-   <form  method="post">
-         <input type="hidden" name="reject_id" value="<?php echo $row['id'];?>">
-         <button type="submit" name="reject" class="btn btn-danger">Reject</button>
-      </form>
-</td>
-   </tr>
-   <?php 
-      }
-   ?>
-  </tbody>
-</table>
+   <td><?php
+                  if($row['v_id']==1){
+                     echo "Pfizer–BioNTech";
+                  }
+                  else if($row['v_id']==2){
+                     echo "Moderna";
+                  }
+                  else if($row['v_id']==3){
+                    echo "CanSino";
+                 }
+                 else if($row['v_id']==4){
+                    echo "SinoVac";
+                 }
+                 else if($row['v_id']==5){
+                    echo "SinoPharm";
+                 }
+                 
+                  
+                  ?></td>
+                  <td><?php echo "2"; ?></td>
+                  <td><?php
+                  if($row['hos_id']==1){
+                     echo "Alkhidmat Hospital";
+                  }
+                  else if($row['hos_id']==2){
+                     echo "Shifa Hospital";
+                  }
+                  else if($row['hos_id']==3){
+                     echo "Liaquat National Hospital";
+                  }
+                  else if($row['hos_id']==4){
+                     echo "Abbasi Shaheed hospital";
+                  }
+                  else if($row['hos_id']==5){
+                     echo "South city hospital";
+                  }
+                  else if($row['hos_id']==6){
+                     echo "Hashmanis hospital";
+                  }
+                  else if($row['hos_id']==7){
+                     echo "Pak International hospital";
+                  }
+                  else if($row['hos_id']==8){
+                     echo "Anum hospital";
+                  }
+                  else if($row['hos_id']==9){
+                     echo "Taj Medical Complex Hospital";
+                  }
+                  else if($row['hos_id']==10){
+                     echo "Karachi Medical Complex Consultants Clinic";
+                  }
+                  else if($row['hos_id']==11){
+                     echo "Altamash General Hospital";
+                  }
+                  
+                  ?></td>
+                  <td><?php echo $row['selected_date'];?></td>
+                  
+               </tr>
+                 </tbody>
+              </table>
+              <?php
+               } 
+              ?>
+
 
             </div>
                </div>
@@ -170,14 +216,22 @@ include 'check.php';
       </div>
       
       <!-- end coronata -->
-      
-      <footer>
+
+
+
+
+
+
+
+
+        <!--  footer -->
+        <footer>
          <div class="footer">
             <div class="container">
                <div style="text-align: center:">
                        
                      
-                        <p><center>&copy; 2020 All Rights Reserved.</center></p>
+                        <p><center>© 2020 All Rights Reserved.</center></p>
                         <br>  
                      </div>
                   </div>
@@ -194,48 +248,3 @@ include 'check.php';
       <script src="../js/custom.js"></script>
    </body>
 </html>
-<?php
-
-   
-   if(isset($_POST['approve'])){
-   
-       $query = "UPDATE `bookings` SET `status`=1 WHERE `id`=".$_POST['appointment_id'];
-       $result=mysqli_query($conn,$query);
-       if($result){
-           echo "<script>
-           alert('This Appintment Status Has been Changed!');
-           window.location='../hospital/p_details.php';
-           </script>   
-           ";
-       }
-       else{
-           echo "<script>
-           alert('This Appintment Status Has not  been Changed!');
-           window.location='../hospital/p_details.php';
-           </script>";
-       }
-   }
-   ?>
-
-<?php
-
-   
-if(isset($_POST['reject'])){
-
-    $query = "UPDATE `bookings` SET `status`=2 WHERE `id`=".$_POST['reject_id'];
-    $result=mysqli_query($conn,$query);
-    if($result){
-        echo "<script>
-        alert('This Appintment Status Has been rejected!');
-        window.location='../hospital/p_details.php';
-        </script>   
-        ";
-    }
-    else{
-        echo "<script>
-        alert('This Appintment Status Has not  been Changed!');
-        window.location='../hospital/p_details.php';
-        </script>";
-    }
-}
-?>

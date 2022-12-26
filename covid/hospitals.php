@@ -166,13 +166,13 @@
           </div>
           
           <!--  footer -->
-      <footer>
+          <footer>
          <div class="footer">
             <div class="container">
                <div style="text-align: center:">
                        
                      
-                        <p><center>© 2020 All Rights Reserved.</center></p>
+                        <p><center>&copy; 2020 All Rights Reserved.</center></p>
                         <br>  
                      </div>
                   </div>

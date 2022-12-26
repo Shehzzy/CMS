@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../config/db.php";
+include 'check.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,8 @@ include "../config/db.php";
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>My Appointments</title>
+      <title>All patients reports</title>
+      <link rel="icon" href="../images/covid.png">
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -30,6 +32,13 @@ include "../config/db.php";
       <link rel="stylesheet" href="ttps://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
       <script src="https://kit.fontawesome.com/aec557161b.js" crossorigin="anonymous"></script>
+      
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="tableExport/tableExport.js"></script>
+<script type="text/javascript" src="tableExport/jquery.base64.js"></script>
+<script src="js/export.js"></script>
 
    </head>
    <!-- body -->
@@ -71,7 +80,10 @@ include "../config/db.php";
       <!-- end header -->
       <!-- end banner -->
      <!-- coronata -->
-     <div class="col-lg-2 col-md-3 col-sm-3">
+      <div class="coronata">
+         <div class="container">
+            <div class="row">
+            <div class="col-lg-2 col-md-3 col-sm-3">
                 <aside>
                   <br>
                   <br>
@@ -81,8 +93,6 @@ include "../config/db.php";
                     <br>
                     <a href="hospital.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Registered Hospitals</span></a>
                     <br>
-                    <a href="p_hosp.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Hospitals Requests</span></a>
-                    <br>
                     <a href="reports.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
                     <a href="vaccine.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Vaccine List</span></a>
@@ -91,17 +101,15 @@ include "../config/db.php";
                     <br>
                     <!-- <a href="reports.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br> -->
-                    <a href="../h_action/h_out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
+                    <a href="out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
 
                 </aside>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-10">
-               <h2 class="text-uppercase text=center ">Appoinment Report</h2>
-               <br>
-               <h5><?php echo"PATIENT ID ".$_SESSION['id'];?></h5>
+               <h2 class="text-uppercase text=center ">Appoinment Reports</h2>
                <br>
                <br>
-              <table class="table table=bordered">
+              <table class="table table=bordered" id="dataTable">
                <thead>
                   <th>ID</th>
                   <th>Name</th>
@@ -112,11 +120,8 @@ include "../config/db.php";
                </thead>
                <tbody>
                <?php
-               $id = $_SESSION['id'];
                include '../config/db.php';
-               $query = "SELECT patients.id,hospital.id,bookings.* FROM `bookings` 
-               INNER JOIN patients ON bookings.p_id=patients.id
-               INNER JOIN hospital ON bookings.hos_id=hospital.id";
+               $query = "SELECT * FROM `bookings`";
                
                $result = mysqli_query($conn, $query);
                while ($row = mysqli_fetch_assoc($result)) {
@@ -160,16 +165,37 @@ include "../config/db.php";
                   }
                   
                   ?></td>
-                  <td><?php echo "Yes";?></td>
-                  <td><?php echo "Done";?></td>
+                  <td>
+                     <?php
+                  if ($row['status'] == 0) {
+                     echo "<span class='text-warning'>Pending</span>";
+
+                  } else if ($row['status'] == 1) {
+                     echo "<span class='text-success'>Yes</span>";
+                  } else if ($row['status'] == 2) {
+                     echo "<span class='text-danger'>No</span>";
+                  }
+               
+                  ?> </td>
+                  <td>  <?php
+                  if ($row['status'] == 0) {
+                     echo "<span class='text-warning'>Pending</span>";
+
+                  } else if ($row['status'] == 1) {
+                     echo "<span class='text-success'>Done</span>";
+                  } else if ($row['status'] == 2) {
+                     echo "<span class='text-danger'>Not done </span>";
+                  }
+               
+                  ?> </td>
                <td><a href="result.php?user_id=<?php echo $_SESSION['id'];?>" ><button class="badge badge-info">Generate Result</button></a></td>
-                  
-               </tr>
                <?php
                } 
               ?>
+               </tr>
                  </tbody>
               </table>
+         
            
 
             </div>
@@ -186,58 +212,14 @@ include "../config/db.php";
 
 
 
-      <!--  footer -->
       <footer>
          <div class="footer">
             <div class="container">
-               <div class="row">
-                        <div class="col-lg-2 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                              <h3>Resources</h3>
-                              <ul class="menu_footer">
-                                 <li><a href="../index.php">Home</a><li>
-                                 <li><a href="">What we do</a><li>
-                                 <li> <a href="">Media</a><li>
-                                 <li> <a href="">Travel Advice</a><li>
-                                 <li><a href="">Protection</a><li>
-                                 <li><a href="">Care</a><li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                             <h3>About</h3>
-                              <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various</p>
-                           </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3  text_align_left">
-                              <h3>Contact  Us</h3>
-                              <ul class="top_infomation">
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>
-                                Making this the first true</li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>
-                                Call : +01 1234567890 </li>
-                                <li><i class="fa fa-envelope" aria-hidden="true"></i>
-                                <a href="">Email : demo@gmail.com</a></li>
-                              </ul>  
-                           </div>
-                        </div>
-                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="hedingh3 text_align_left">
-                              <h3>countrys</h3>
-                           <div class="map">
-                              <img src="../images/map.png" alt="#"/>
-                           </div>
-                        </div>
-                     </div>
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-8 offset-md-2">
-                        <p>© 2020 All Rights Reserved. Design by <a href="https://html.design/"> Free html Templates</a></p>
+               <div style="text-align: center:">
+                       
+                     
+                        <p><center>&copy; 2020 All Rights Reserved.</center></p>
+                        <br>  
                      </div>
                   </div>
                </div>
@@ -253,3 +235,4 @@ include "../config/db.php";
       <script src="../js/custom.js"></script>
    </body>
 </html>
+

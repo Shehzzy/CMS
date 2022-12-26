@@ -326,7 +326,7 @@ Wash reusable masks after each use.</span>
                <div style="text-align: center:">
                        
                      
-                        <p><center>© 2020 All Rights Reserved.</center></p>
+                        <p><center>&copy; 2020 All Rights Reserved.</center></p>
                         <br>  
                      </div>
                   </div>

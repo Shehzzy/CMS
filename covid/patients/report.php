@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../config/db.php";
+include 'check.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,9 @@ include "../config/db.php";
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>My Appointments</title>
+      <title>My Reports</title>
+      <link rel="icon" href="../images/covid.png">
+
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -161,11 +164,12 @@ include "../config/db.php";
                <td><a href="result.php?user_id=<?php echo $_SESSION['id'];?>" ><button class="badge badge-info">Generate Result</button></a></td>
                   
                </tr>
-                 </tbody>
-              </table>
-              <?php
+               <?php
                } 
               ?>
+                 </tbody>
+              </table>
+             
 
             </div>
                </div>
@@ -181,58 +185,14 @@ include "../config/db.php";
 
 
 
-      <!--  footer -->
       <footer>
          <div class="footer">
             <div class="container">
-               <div class="row">
-                        <div class="col-lg-2 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                              <h3>Resources</h3>
-                              <ul class="menu_footer">
-                                 <li><a href="../index.php">Home</a><li>
-                                 <li><a href="">What we do</a><li>
-                                 <li> <a href="">Media</a><li>
-                                 <li> <a href="">Travel Advice</a><li>
-                                 <li><a href="">Protection</a><li>
-                                 <li><a href="">Care</a><li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3 text_align_left">
-                             <h3>About</h3>
-                              <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various</p>
-                           </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                           <div class="hedingh3  text_align_left">
-                              <h3>Contact  Us</h3>
-                              <ul class="top_infomation">
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>
-                                Making this the first true</li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>
-                                Call : +01 1234567890 </li>
-                                <li><i class="fa fa-envelope" aria-hidden="true"></i>
-                                <a href="">Email : demo@gmail.com</a></li>
-                              </ul>  
-                           </div>
-                        </div>
-                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="hedingh3 text_align_left">
-                              <h3>countrys</h3>
-                           <div class="map">
-                              <img src="../images/map.png" alt="#"/>
-                           </div>
-                        </div>
-                     </div>
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-8 offset-md-2">
-                        <p>© 2020 All Rights Reserved. Design by <a href="https://html.design/"> Free html Templates</a></p>
+               <div style="text-align: center:">
+                       
+                     
+                        <p><center>&copy; 2020 All Rights Reserved.</center></p>
+                        <br>  
                      </div>
                   </div>
                </div>
@@ -248,13 +208,3 @@ include "../config/db.php";
       <script src="../js/custom.js"></script>
    </body>
 </html>
-<script>
-
-document.ready(function){
-$('.status').change(function(){
-    var id = $(this).attr('id');
-    var slected_status = $(this).find(":selected").val();
-
-});
-}
-</script>
