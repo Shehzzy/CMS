@@ -2,6 +2,11 @@
 session_start();
 include "../config/db.php";
 include 'check.php';
+include 'check.php';
+$id=$_SESSION['id'];
+$query="SELECT * FROM `patients`  where `id`=$id";
+$result=mysqli_query($conn,$query);
+$row=mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,23 +86,27 @@ include 'check.php';
                   <br>
                   <a href="profile.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My Profile</span></a>
                   <br>
+                  <br>
+                  
                     <a href="app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My appoinments</span></a>
+                    <br>
                     <br>
                     <a href="b_app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Book an appoinment</span></a>
                     <br>
-                    
+                    <br>
                     <a href="result.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Results</span></a>
                     <br>
+                    <br>   
                     <a href="report.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
                 </aside>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-10">
+            <h5><?php echo $row['f_name']." " .$row['l_name'];?></h5>
+               <br>
                 <div class="text-center">
                <h2 class="text-uppercase">RESULT</h2>
                </div>
-               <br>
-               <h5><?php echo"PATIENT ID ".$_SESSION['id'];?></h5>
                <br>
                <br>
                <?php
@@ -223,12 +232,13 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
 
-
+      </div>
+         </div>
         <!--  footer -->
         <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center:">
+               <div style="text-align: center">
                        
                      
                         <p><center>© 2020 All Rights Reserved.</center></p>
@@ -236,8 +246,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                      </div>
                   </div>
                </div>
-            </div>
-         </div>
+          
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->

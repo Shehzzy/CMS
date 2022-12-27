@@ -2,6 +2,11 @@
 session_start();
 include '../config/db.php';
 include 'check.php';
+$id=$_SESSION['hos_id'];
+$query="SELECT * FROM `hospital`  where `id`=$id";
+$result=mysqli_query($conn,$query);
+$row=mysqli_fetch_assoc($result);
+
 
 ?>
 <!DOCTYPE html>
@@ -96,19 +101,20 @@ include 'check.php';
                     <br>
                     <a href="result.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Results</span></a>
                     <br>
-                    <a href="report.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
-                    <br>
                     <a href="../h_action/h_out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
 
                 </aside>
             </div>
              <!-- SIDE PANEL END  -->
-
             <div class="col-lg-10 col-md-10 col-sm-10">
+            <h4><?php echo $row['name'];?></h4>
+            <br>
+            <br>
+
                <h2 class="text-uppercase">All Patient Details</h2>
                <br>
                <br>
-               <h4>HOSPITAL ID<?php echo $_SESSION['hos_id'];?></h4>
+               
                <table class="table table-bordered">
   <thead>
     <tr>
@@ -174,7 +180,7 @@ include 'check.php';
       <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center:">
+               <div style="text-align: center">
                        
                      
                         <p><center>&copy; 2020 All Rights Reserved.</center></p>

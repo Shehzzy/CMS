@@ -1,7 +1,7 @@
 <?php
 $id=$_GET['user_id'];
 include '../config/db.php';
-$query="DELETE FROM `patients` WHERE `id`=$id";
+$query="DELETE FROM `hospital` WHERE `id`=$id";
 $result=mysqli_query($conn,$query);
 
 echo "<script>

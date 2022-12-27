@@ -84,24 +84,24 @@
             </div>
             <div class="row">
                <div class="col-md-6">
-                  <form id="request" class="main_form">
+                  <form action="c_action.php" method="post">
                      <div class="row">
                         <div class="col-md-12 ">
-                           <input class="contactus" placeholder="Full Name" type="type" name=" Name"> 
+                           <input class="contactus" placeholder="Full Name" type="text" name="c_name"> 
                         </div>
                         <div class="col-md-12">
-                           <input class="contactus" placeholder="Email" type="type" name="Email Address">                          
+                           <input class="contactus" placeholder="Email" type="email" name="email">                          
                         </div>
                         <div class="col-md-12">
-                           <input class="contactus" placeholder="Phone" type="type" name="Phone Number"> 
+                           <input class="contactus" placeholder="Phone" type="number" name="p_number"> 
                         </div>
                         <div class="col-md-12">
-                           <textarea class="textarea" placeholder="Message" type="type" Message="Name"></textarea>
+                           <textarea class="textarea" placeholder="Message" type="type" name="msg"></textarea>
                         </div>
                         <div class="col-md-12">
-                           <button class="send_btn">Send Now</button>
+                           <button class="send_btn" type="submit" name="btn">Send Now</button>
                         </div>
-                     </div>
+                     </div>  
                   </form>
                </div>
                 <div class="col-md-6">
@@ -117,7 +117,7 @@
        <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center:">
+               <div style="text-align: center">
                        
                      
                         <p><center>© 2020 All Rights Reserved.</center></p>

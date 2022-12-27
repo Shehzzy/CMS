@@ -1022,7 +1022,7 @@ padding: 80px 0;
 /** footer **/
 
 .footer {
-    padding-top: 80px;
+    /* padding-top: 80px; */
     background: #111111;
     text-align: center;
 }
@@ -1214,7 +1214,7 @@ padding-bottom: 40px;}
 }
 
 aside{
-    height:170%;
+    height:1100px;
      margin-left:-120px;
      margin-top: -130px;;
      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;

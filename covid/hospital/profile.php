@@ -94,8 +94,6 @@ include 'check.php';
                     <br>
                     <a href="result.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Results</span></a>
                     <br>
-                    <a href="report.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
-                    <br>
                     <a href="../h_action/h_out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
 
                 </aside>
@@ -115,7 +113,7 @@ include 'check.php';
                <h4>Information</h4>
                <br>
                <h6 class="font-weight-bold">HOSPITAL ID</h6>
-               <p><?php echo $_SESSION  ['hos_id']; ?></p>
+               <p><?php echo $_SESSION ['hos_id']; ?></p>
                <br>
               <?php
               $id = $_SESSION['hos_id'];
@@ -163,7 +161,7 @@ include 'check.php';
       <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center:">
+               <div style="text-align: center">
                        
                      
                         <p><center>&copy; 2020 All Rights Reserved.</center></p>

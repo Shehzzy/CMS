@@ -172,7 +172,7 @@ include 'check.php';
        <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center:">
+               <div style="text-align: center">
                        
                      
                <center><p> 2020 All Rights Reserved.</p></center>

@@ -110,17 +110,6 @@ session_start();
 </select>
     </div>
 <div>
-
-<div class="form-group">
-      <label for="email">Region</label>
-      <br>
-    <select name="city">
-      <option value="0">Select Region</option>
-      <option value="Malir">Malir</option>
-      <option value="PECHS">PECHS</option>
-      <option>
-</select>
-</div>
 </div>
 <div class="text-center text-white">
   <button type="submit" class="btn btn-danger mt-5 mb-5" name="register">Register now </button>
@@ -143,7 +132,7 @@ session_start();
       <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center:">
+               <div style="text-align: center">
                        
                      
                         <p><center>&copy; 2020 All Rights Reserved.</center></p>

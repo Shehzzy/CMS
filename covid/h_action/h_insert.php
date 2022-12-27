@@ -8,14 +8,13 @@ if(isset($_POST['register'])){
     $address=$_POST['address'];
     $number=$_POST['cont_number'];
     $city=$_POST['city'];
-    $region=$_POST['region'];
    
 
     include '../config/db.php';
     //make connection with database. 4 paramater server name,db user_name, db password, db name
     
-    $query="INSERT INTO `hospital`( `name`, `email`, `password`, `address`, `cont_number`, `city`, `region`)
-     VALUES ('$user_name','$user_email','$user_pswd','$address','$number','$city','$region')";
+    $query="INSERT INTO `hospital`( `name`, `email`, `password`, `address`, `cont_number`, `city`)
+     VALUES ('$user_name','$user_email','$user_pswd','$address','$number','$city')";
     
     //execute or run query on database connection
     $result=mysqli_query($conn,$query);
@@ -24,7 +23,7 @@ if(isset($_POST['register'])){
         //register page is one folder back 
 
         echo "<script>
-        alert('Congratulation you have successfully Registered!');
+        alert('Please wait for admin approval!');
         window.location='../hospital/h_login.php';
         </script>";
     }

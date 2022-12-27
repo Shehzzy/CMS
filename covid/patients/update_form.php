@@ -175,7 +175,7 @@ $row=mysqli_fetch_assoc($result);
         <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center:">
+               <div style="text-align: center">
                        
                      
                         <p><center>© 2020 All Rights Reserved.</center></p>

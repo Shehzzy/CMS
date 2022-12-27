@@ -2,6 +2,11 @@
 session_start();
 include "../config/db.php";
 include 'check.php';
+include 'check.php';
+$id=$_SESSION['id'];
+$query="SELECT * FROM `patients`  where `id`=$id";
+$result=mysqli_query($conn,$query);
+$row=mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,9 +100,9 @@ include 'check.php';
                 </aside>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-10">
-               <h2 class="text-uppercase text=center ">Appoinment Report</h2>
+            <h5><?php echo $row['f_name']." " .$row['l_name'];?></h5>
                <br>
-               <h5><?php echo"PATIENT ID ".$_SESSION['id'];?></h5>
+               <h2 class="text-uppercase text=center ">Appoinment Report</h2>
                <br>
                <br>
               <table class="table table=bordered">
@@ -188,7 +193,7 @@ include 'check.php';
       <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center:">
+               <div style="text-align: center">
                        
                      
                         <p><center>&copy; 2020 All Rights Reserved.</center></p>

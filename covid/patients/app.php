@@ -2,6 +2,10 @@
 session_start();
 include "../config/db.php";
 include 'check.php';
+$id=$_SESSION['id'];
+$query="SELECT * FROM `patients`  where `id`=$id";
+$result=mysqli_query($conn,$query);
+$row=mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,9 +100,9 @@ include 'check.php';
                 </aside>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-10">
-               <h2 class="text-uppercase">My Appointments</h2>
+            <h5><?php echo $row['f_name']." " .$row['l_name'];?></h5>
                <br>
-               <h5><?php echo"PATIENT ID ".$_SESSION['id'];?></h5>
+               <h2 class="text-uppercase">My Appointments</h2>
                <br>
                <br>
               <table class="table table=bordered">
@@ -131,59 +135,45 @@ include 'check.php';
                   <td><?php echo $row['P_name']; ?></td>
                   <td><?php echo $row['number']; ?></td>
                   <td><?php
-                  if($row['hos_id']==1){
+                  if ($row['hos_id'] == 1) {
                      echo "Alkhidmat Hospital";
-                  }
-                  else if($row['hos_id']==2){
+                  } else if ($row['hos_id'] == 2) {
                      echo "Shifa Hospital";
-                  }
-                  else if($row['hos_id']==3){
+                  } else if ($row['hos_id'] == 3) {
                      echo "Liaquat National Hospital";
-                  }
-                  else if($row['hos_id']==4){
+                  } else if ($row['hos_id'] == 4) {
                      echo "Abbasi Shaheed hospital";
-                  }
-                  else if($row['hos_id']==5){
+                  } else if ($row['hos_id'] == 5) {
                      echo "South city hospital";
-                  }
-                  else if($row['hos_id']==6){
+                  } else if ($row['hos_id'] == 6) {
                      echo "Hashmanis hospital";
-                  }
-                  else if($row['hos_id']==7){
+                  } else if ($row['hos_id'] == 7) {
                      echo "Pak International hospital";
-                  }
-                  else if($row['hos_id']==8){
+                  } else if ($row['hos_id'] == 8) {
                      echo "Anum hospital";
-                  }
-                  else if($row['hos_id']==9){
+                  } else if ($row['hos_id'] == 9) {
                      echo "Taj Medical Complex Hospital";
-                  }
-                  else if($row['hos_id']==10){
+                  } else if ($row['hos_id'] == 10) {
                      echo "Karachi Medical Complex Consultants Clinic";
-                  }
-                  else if($row['hos_id']==11){
+                  } else if ($row['hos_id'] == 11) {
                      echo "Altamash General Hospital";
                   }
-                  
+
                   ?></td>
                   <td><?php
-                  if($row['v_id']==1){
+                  if ($row['v_id'] == 1) {
                      echo "Pfizer–BioNTech";
-                  }
-                  else if($row['v_id']==2){
+                  } else if ($row['v_id'] == 2) {
                      echo "Moderna";
+                  } else if ($row['v_id'] == 3) {
+                     echo "CanSino";
+                  } else if ($row['v_id'] == 4) {
+                     echo "SinoVac";
+                  } else if ($row['v_id'] == 5) {
+                     echo "SinoPharm";
                   }
-                  else if($row['v_id']==3){
-                    echo "CanSino";
-                 }
-                 else if($row['v_id']==4){
-                    echo "SinoVac";
-                 }
-                 else if($row['v_id']==5){
-                    echo "SinoPharm";
-                 }
-                 
-                  
+
+
                   ?></td>
                   <td><?php echo $row['selected_date']; ?></td>
                   <td><?php echo $row['selected_time']; ?></td>
@@ -197,12 +187,15 @@ include 'check.php';
                   } else if ($row['status'] == 2) {
                      echo "<span class='badge badge-danger'>Rejected</span>";
                   }
-               }
-                  ?> 
+
+                     ?> 
                </td> 
-               <td><a href="report.php?user_id=<?php echo $_SESSION['id'];?>" ><button class="badge badge-info">Report</button></a></td>
+               <td><a href="report.php?user_id=<?php echo $_SESSION['id']; ?>" ><button class="badge badge-info">Report</button></a></td>
                   
                </tr>
+               <?php
+               }
+              ?>
                  </tbody>
               </table>
 
@@ -224,7 +217,7 @@ include 'check.php';
        <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center:">
+               <div style="text-align: center">
                        
                      
                         <p><center>© 2020 All Rights Reserved.</center></p>
@@ -232,8 +225,7 @@ include 'check.php';
                      </div>
                   </div>
                </div>
-            </div>
-         </div>
+           
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->

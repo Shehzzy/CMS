@@ -104,7 +104,7 @@ if(isset($_POST['login'])){
 
     include '../config/db.php';
 
-    $query="SELECT * FROM `hospital` WHERE `email`='$email' and `password`='$pass' where `status` =1";
+    $query="SELECT * FROM `hospital` WHERE `email`='$email' and `password`='$pass' AND  `status` =1";
     $result=mysqli_query($conn,$query);
          $count=mysqli_num_rows($result);
     
@@ -135,7 +135,7 @@ if(isset($_POST['login'])){
 <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center:">
+               <div style="text-align: center">
                        
                      
                         <p><center>&copy; 2020 All Rights Reserved.</center></p>

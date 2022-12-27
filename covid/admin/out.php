@@ -1,12 +1,10 @@
 <?php
 session_start();
-unset($_SESSION['email']);
+unset($_SESSION['a_email']);
 
-session_destroy();
+// session_destroy();
 
 echo "<script>
 window.location='login.php';
 </script>";
-
-
 ?>

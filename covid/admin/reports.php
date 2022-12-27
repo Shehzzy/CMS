@@ -87,11 +87,11 @@ include 'check.php';
                 <aside>
                   <br>
                   <br>
-                  <a href="profile.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My Profile</span></a>
-                  <br>
                     <a href="alldetails.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">All Patient Details</span></a>
                     <br>
                     <a href="hospital.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Registered Hospitals</span></a>
+                    <br>
+                    <a href="p_hosp.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Pending Hospitals Requests </span></a>
                     <br>
                     <a href="reports.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
                     <br>
@@ -116,7 +116,6 @@ include 'check.php';
                   <th>Hospital</th>
                   <th>Vaccinated</th>
                   <th>Covid Test</th>
-                  <th>Results</th>
                </thead>
                <tbody>
                <?php
@@ -188,7 +187,6 @@ include 'check.php';
                   }
                
                   ?> </td>
-               <td><a href="result.php?user_id=<?php echo $_SESSION['id'];?>" ><button class="badge badge-info">Generate Result</button></a></td>
                <?php
                } 
               ?>
@@ -215,7 +213,7 @@ include 'check.php';
       <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center:">
+               <div style="text-align: center">
                        
                      
                         <p><center>&copy; 2020 All Rights Reserved.</center></p>
