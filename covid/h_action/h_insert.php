@@ -18,13 +18,13 @@ if(isset($_POST['register'])){
     
     //execute or run query on database connection
     $result=mysqli_query($conn,$query);
-    if($result){
+    if($result<0){
         //first show alert message that redirect again to register pafe.
         //register page is one folder back 
 
         echo "<script>
         alert('Please wait for admin approval!');
-        window.location='../hospital/h_login.php';
+        window.location='../hospital/waiting.php';
         </script>";
     }
     else{

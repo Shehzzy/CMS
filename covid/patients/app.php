@@ -158,6 +158,9 @@ $row=mysqli_fetch_assoc($result);
                   } else if ($row['hos_id'] == 11) {
                      echo "Altamash General Hospital";
                   }
+                  else if ($row['hos_id'] == 12) {
+                     echo "Dr Ziauddin Hospital";
+                  }
 
                   ?></td>
                   <td><?php
