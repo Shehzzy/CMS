@@ -34,9 +34,9 @@
     
       <!-- top -->
            <!-- header -->
-           <header class="header-area">
+         <header class="header-area">
          <div class="left">
-         <img src="images/covid.png" alt="#"/>
+               <a href=""><i class="fa fa-search" aria-hidden="true"></i></a>
             </div>
             <div class="right">
                <a href="u_page.php"><i class="fa fa-user" aria-hidden="true"></i></a>
@@ -80,7 +80,6 @@
               <div class="card-body">
                 <h1 class="card-title" style="font-size: 3em; text-align: center;">Al Khidmat Hospital</h1>
              
-                <button class="btn" style="border: 2px solid; background-color:skyblue; color:white;  margin-top: 15px; height: 55px; width: 150px;"><a href="Al Khidmat.php">DETAILS </a></button>
               </div>
             </div>
             <div class="card">
@@ -88,7 +87,6 @@
               <div class="card-body">
                 <h1 class="card-title" style="font-size: 3em; text-align: center;">A.0 Hospital</h1>
                 
-                <button class="btn" style="border: 2px solid; background-color:skyblue; color:white;  margin-top: 15px;  height: 55px; width: 150px;"> <a href="A.O Hospital.php"> DETAILS </a></button>
               
               </div>
             </div>
@@ -96,7 +94,6 @@
               <img src="images/pak international hospital.jpg" class="" height="550px" width="570px" alt="..." style="margin-left: 0px;">
               <div class="card-body">
                 <h1 class="card-title" style="font-size: 2.5em; text-align: center;">Pak International Hospital</h1>
-                <button class="btn" style="border: 2px solid; background-color:skyblue; color:white;  margin-top: 15px;  height: 55px; width: 150px;">DETAILS </button>
               
               </div>
             </div>
@@ -109,7 +106,6 @@
               <div class="card-body">
                 <h1 class="card-title" style="font-size: 3em; text-align: center;">Patel Hospital</h1>
                 
-                <button class="btn" style="border: 2px solid; background-color:skyblue; color:white;  margin-top:15px; height: 55px; width: 150px;">DETAILS </button>
               
               </div>
             </div>
@@ -118,7 +114,6 @@
               <div class="card-body">
                 <h1 class="card-title" style="font-size: 3em; text-align: center;">Shifa Hospital</h1>
                 
-                <button class="btn" style="border: 2px solid; background-color:skyblue; color:white;  margin-top: 15px;  height: 55px; width: 150px;">DETAILS </button>
               
               </div>
             </div>
@@ -127,7 +122,6 @@
               <div class="card-body">
                 <h1 class="card-title" style="font-size: 2.8em; text-align: center;">Children Hospital</h1>
                
-                <button class="btn" style="border: 2px solid; background-color:skyblue; color:white;  margin-top: 15px;  height: 55px; width: 150px;">DETAILS </button>
               
               </div>
             </div> 
@@ -140,7 +134,6 @@
                 <div class="card-body">
                   <h1 class="card-title" style="font-size: 2.5em; text-align: center;">Agha Khan Hospital</h1>
                   
-                  <button class="btn" style="border: 2px solid; background-color:skyblue; color:white;  margin-top: 15px;  height: 55px; width: 150px;">DETAILS </button>
               
                 </div>
               </div>
@@ -149,7 +142,6 @@
                 <div class="card-body">
                   <h1 class="card-title" style="font-size: 3em; text-align: center;">Dow Hospital</h1>
                   
-                  <button class="btn" style="border: 2px solid; background-color:skyblue; color:white;  margin-top: 15px;  height: 55px; width: 150px;">DETAILS </button>
               
                 </div>
               </div>
@@ -158,22 +150,75 @@
                 <div class="card-body">
                   <h1 class="card-title" style="font-size: 2.5em; text-align: center;">Liaquat National Hospital</h1>
                  
-                  <button class="btn" style="border: 2px solid; background-color:skyblue; color:white;  margin-top: 15px;  height: 55px; width: 150px;">DETAILS </button>
                 </div>
           </div>
         
           </div>
           </div>
           
-          <!--  footer -->
-          <footer>
+         <!--  footer -->
+ <footer>
          <div class="footer">
             <div class="container">
-               <div style="text-align: center">
-                       
+               <div class="row">
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                           <div class="hedingh3 text_align_left">
+                              <h3>Resources</h3>
+                              <ul class="menu_footer">
+                                 <li><a href="index.php">Home</a><li>
+                                 <li><a href="">What we do</a><li>
+                                 <li> <a href="">Media</a><li>
+                                 <li> <a href="">Travel Advice</a><li>
+                                 <li><a href="">Protection</a><li>
+                                 <li><a href="">Care</a><li>
+                              </ul>
+                             
+           
+                           </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                           <div class="hedingh3 text_align_left">
+                             <h3>About</h3>
+                              <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various</p>
+                           </div>
+                        </div>
                      
-                        <p><center>&copy; 2020 All Rights Reserved.</center></p>
-                        <br>  
+                
+                       
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                           <div class="hedingh3  text_align_left">
+                              <h3>Contact  Us</h3>
+                                <ul class="top_infomation">
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>
+                           Making this the first true  
+                        </li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i>
+                           Call : +01 1234567890
+                        </li>
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i>
+                           <a href="Javascript:void(0)">Email : demo@gmail.com</a>
+                        </li>
+                     </ul>
+                            
+                           
+                     </div>
+                  </div>
+                     <div class="col-lg-4 col-md-6 col-sm-6">
+                           <div class="hedingh3 text_align_left">
+                              <h3>countrys</h3>
+                              <div class="map">
+                                <img src="images/map.png" alt="#"/>
+                              </div>
+                           </div>
+                        </div>
+                    
+               </div>
+            </div>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-8 offset-md-2">
+                        <p>© 2020 All Rights Reserved. Design by <a href="https://html.design/"> Free html Templates</a></p>
                      </div>
                   </div>
                </div>

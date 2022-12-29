@@ -1,14 +1,14 @@
 <?php 
 if(isset($_POST['btn'])){
-    $name = $_POST['c_name'];
+    $name = $_POST['Name'];
     $email = $_POST['email'];
-    $number = $_POST['p_number'];
+    $number = $_POST['number'];
     $txt = $_POST['msg'];
 
 
     include 'config/db.php';
 
-    $query = "INSERT INTO `message`( `Name`, `email`, `phone`, `message`) VALUES ('$name','$email'.'$number','$txt')";
+    $query = "INSERT INTO `message`( `Name`, `email`, `phone`, `message`) VALUES ('$name','$email','$number','$txt')";
 
    $result=mysqli_query($conn,$query);
     if($result){

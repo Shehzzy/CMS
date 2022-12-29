@@ -56,9 +56,7 @@ session_start();
                               <li><a href="../index.php">Home</a></li>
                               <li><a href="../about.php">About</a></li>
                               <li><a href="../action.php">take action</a></li>
-                              <!-- <li><a href="index.php" class="logo_midle">covido</a></li> -->
-                              <li><a  href="../news.php">news</a></li>
-                              <li><a href="../doctores.php">doctores</a></li>
+                             
                               <li><a href="../contact.php">Contact </a></li>
                            </ul>
                         </nav>
@@ -107,21 +105,26 @@ if(isset($_POST['login'])){
     $query="SELECT * FROM `hospital` WHERE `email`='$email' and `password`='$pass' AND  `status` =1";
     $result=mysqli_query($conn,$query);
          $count=mysqli_num_rows($result);
+
+         $row=mysqli_fetch_assoc($result);
+         $_SESSION['hos_id']=$row['id'];
+       $_SESSION['h_email'] = $row['email'];
     
-    if($count>0){
-      $row=mysqli_fetch_assoc($result);
-        $_SESSION['hos_id']=$row['id'];
-      $_SESSION['h_email'] = $row['email'];
+    if($row['status']==0){
+      echo "<script>
+      alert(' you are not logged in!');
+      window.location='waiting.php';
+      </script>";
+        
+    }
+    else if($row['status']==1){
+        
+
         echo "<script>
         alert('Congratulation you have successfully login!');
         window.location='profile.php';
         </script>";
-    }
-    else{
-        echo "<script>
-        alert(' you are not logged in!');
-        window.location='h_login.php';
-        </script>";
+
     }}
 
  ?>

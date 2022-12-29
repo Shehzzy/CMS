@@ -57,13 +57,9 @@ include 'check.php';
                      <div class="navbar-area">
                         <nav class="site-navbar">
                         <ul>
-                              <li><a class="active" href="index.php">Home</a></li>
-                              <li><a href="about.php">Hospitals</a></li>
-                              <li><a href="action.php">Appointments</a></li>
-                              <!-- <li><a href="index.php" class="logo_midle">covido</a></li> -->
-                              <li><a href="news.php">news</a></li>
-                              <li><a href="about.php">About</a></li>
-                              <li><a href="contact.php">Contact </a></li>
+                              <li><a class="active" href="../index.php">Home</a></li>
+                              <li><a href="../about.php">About</a></li>
+                            
                            </ul>
                         </nav>
                      </div>
@@ -84,6 +80,7 @@ include 'check.php';
 
                <div class="col-lg-2 col-md-3 col-sm-3">
                 <aside>
+                  <br>
                   <br>
                     <a href="alldetails.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">All Patient Details</span></a>
                     <br>

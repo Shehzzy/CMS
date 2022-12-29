@@ -57,13 +57,9 @@ include 'check.php';
                      <div class="navbar-area">
                         <nav class="site-navbar">
                         <ul>
-                              <li><a class="active" href="index.php">Home</a></li>
-                              <li><a href="about.php">Hospitals</a></li>
-                              <li><a href="action.php">Appointments</a></li>
-                              <!-- <li><a href="index.php" class="logo_midle">covido</a></li> -->
-                              <li><a href="news.php">news</a></li>
-                              <li><a href="about.php">About</a></li>
-                              <li><a href="contact.php">Contact </a></li>
+                              <li><a  href="../index.php">Home</a></li>
+                              <li><a href="../about.php">About</a></li>
+                           
                            </ul>
                         </nav>
                      </div>

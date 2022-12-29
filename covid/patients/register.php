@@ -41,7 +41,7 @@ session_start();
          <img src="../images/covid.png" alt="#"/>
             </div>
             <div class="right">
-               <a href="u_page.php"><i class="fa fa-user" aria-hidden="true"></i></a>
+               <a href="../u_page.php"><i class="fa fa-user" aria-hidden="true"></i></a>
             </div>
             <div class="container">
                <div class="row d_flex">
@@ -53,13 +53,13 @@ session_start();
                   <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-9">
                      <div class="navbar-area">
                         <nav class="site-navbar">
-                           <ul>
-                           <li><a href="index.php">Home</a></li>
-                              <li><a href="hospitals.php">Hospitals</a></li>
-                              <li><a href="about.php">About Us</a></li>
-                              <li><a href="contact.php">Contact Us </a></li>
-                        
-                        </ul>
+                        <ul>
+                              <li><a href="../index.php">Home</a></li>
+                              <li><a href="../about.php">About</a></li>
+                              <li><a href="../action.php">take action</a></li>
+                             
+                              <li><a href="../contact.php">Contact </a></li>
+                           </ul>
                            <button class="nav-toggler">
                            <span></span>
                            </button>

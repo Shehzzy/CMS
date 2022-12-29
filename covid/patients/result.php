@@ -2,7 +2,6 @@
 session_start();
 include "../config/db.php";
 include 'check.php';
-include 'check.php';
 $id=$_SESSION['id'];
 $query="SELECT * FROM `patients`  where `id`=$id";
 $result=mysqli_query($conn,$query);
@@ -47,7 +46,7 @@ $row=mysqli_fetch_assoc($result);
          <img src="../images/covid.png" alt="#"/>
             </div>
             <div class="right">
-               <a href="u_page.php"><i class="fa fa-user" aria-hidden="true"></i></a>
+               <a href="../u_page.php"><i class="fa fa-user" aria-hidden="true"></i></a>
             </div>
             <div class="container">
                <div class="row d_flex">
@@ -60,13 +59,11 @@ $row=mysqli_fetch_assoc($result);
                      <div class="navbar-area">
                         <nav class="site-navbar">
                         <ul>
-                              <li><a class="active" href="index.php">Home</a></li>
-                              <li><a href="about.php">Hospitals</a></li>
-                              <li><a href="action.php">Appointments</a></li>
-                              <!-- <li><a href="index.php" class="logo_midle">covido</a></li> -->
-                              <li><a href="news.php">news</a></li>
-                              <li><a href="about.php">About</a></li>
-                              <li><a href="contact.php">Contact </a></li>
+                              <li><a href="../index.php">Home</a></li>
+                              <li><a href="../about.php">About</a></li>
+                              <li><a href="../action.php">take action</a></li>
+                             
+                              <li><a href="../contact.php">Contact </a></li>
                            </ul>
                         </nav>
                      </div>
@@ -80,24 +77,23 @@ $row=mysqli_fetch_assoc($result);
       <div class="coronata">
          <div class="container">
             <div class="row">
-            <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="col-lg-2 col-md-2 col-sm-2">
                 <aside>
                   <br>
                   <br>
                   <a href="profile.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My Profile</span></a>
                   <br>
-                  <br>
-                  
-                    <a href="app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My appoinments</span></a>
-                    <br>
+                  <a href="app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3 mt-5">My appoinments</span></a>
                     <br>
                     <a href="b_app.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Book an appoinment</span></a>
                     <br>
-                    <br>
+                    
                     <a href="result.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Results</span></a>
                     <br>
-                    <br>   
                     <a href="report.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Reports</span></a>
+                    <br>
+                    <br>
+                    <a href="p_out.php" class="link ml-5 mt-5"><i class="fa-sharp fa-solid fa-plus mt-5"></i><span class="ml-3  mt-5">Logout</span></a>
                     <br>
                 </aside>
             </div>

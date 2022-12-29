@@ -1,8 +1,8 @@
 <?php 
-include 'check.php';
 session_start();
 include '../config/db.php';
-$query = "SELECT * FROM `vaccine` where `Id`=". $_GET['user_id'];
+include 'check.php';
+$query = "SELECT * FROM `vaccine` where `Id`=". $_GET['v_id'];
 $result=mysqli_query($conn,$query);
 $row=mysqli_fetch_assoc($result);
 ?>
@@ -28,7 +28,7 @@ $row=mysqli_fetch_assoc($result);
       <!-- Responsive-->
       <link rel="stylesheet" href="../css/responsive.css">
       <!-- fevicon -->
-      <link rel="icon" href="images/fevicon.png" type="image/gif"/>
+      <link rel="icon" href="../images/fevicon.png" type="image/gif"/>
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
        <link rel="stylesheet" href="css/owl.carousel.min.css"> 
@@ -59,13 +59,9 @@ $row=mysqli_fetch_assoc($result);
                      <div class="navbar-area">
                         <nav class="site-navbar">
                         <ul>
-                              <li><a class="active" href="index.php">Home</a></li>
-                              <li><a href="about.php">Hospitals</a></li>
-                              <li><a href="action.php">Appointments</a></li>
-                              <!-- <li><a href="index.php" class="logo_midle">covido</a></li> -->
-                              <li><a href="news.php">news</a></li>
-                              <li><a href="about.php">About</a></li>
-                              <li><a href="contact.php">Contact </a></li>
+                              <li><a class="active" href="../index.php">Home</a></li>
+                              <li><a href="../about.php">About</a></li>
+                             
                            </ul>
                         </nav>
                      </div>
@@ -117,7 +113,7 @@ $row=mysqli_fetch_assoc($result);
                <div class="form-group">
          <div class="form-group">
          <label for="avail">Set Availability</label>
-         <input type="hidden" class="form-control"  value="<?php echo $_GET['user_id'];?>" name="user_id">
+         <input type="hidden" class="form-control"  value="<?php echo $_GET['v_id'];?>" name="user_id">
 
          <input type="text" class="form-control" value="<?php echo $row['Id'];?>" id="num" name="avail">
          </div>

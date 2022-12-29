@@ -57,13 +57,9 @@ include 'check.php';
                      <div class="navbar-area">
                         <nav class="site-navbar">
                         <ul>
-                              <li><a class="active" href="index.php">Home</a></li>
-                              <li><a href="about.php">Hospitals</a></li>
-                              <li><a href="action.php">Appointments</a></li>
-                              <!-- <li><a href="index.php" class="logo_midle">covido</a></li> -->
-                              <li><a href="news.php">news</a></li>
-                              <li><a href="about.php">About</a></li>
-                              <li><a href="contact.php">Contact </a></li>
+                              <li><a  href="../index.php">Home</a></li>
+                              <li><a href="../about.php">Hospitals</a></li>
+                             
                            </ul>
                         </nav>
                      </div>
@@ -142,7 +138,7 @@ include 'check.php';
    }
    ?></td>
    <td>
- <a href="u_vaccine.php?user_id=<?php echo $row['Id'];?>"><button class="btn btn-primary" name="v_update">Update</button></a>
+ <a class="btn btn-primary" href="u_vaccine.php?v_id=<?php echo $row['Id'];?>"><button  name="v_update"></button>Update</a>
  </td>
 
    

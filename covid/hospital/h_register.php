@@ -52,13 +52,11 @@ session_start();
                   <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-9">
                      <div class="navbar-area">
                         <nav class="site-navbar">
-                           <ul>
+                        <ul>
                               <li><a href="../index.php">Home</a></li>
                               <li><a href="../about.php">About</a></li>
                               <li><a href="../action.php">take action</a></li>
-                              <!-- <li><a href="index.html" class="logo_midle">covido</a></li> -->
-                              <li><a class="active" href="../news.php">news</a></li>
-                              <li><a href="../doctores.php">doctores</a></li>
+                             
                               <li><a href="../contact.php">Contact </a></li>
                            </ul>
                         </nav>

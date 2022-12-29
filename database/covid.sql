@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2022 at 08:59 AM
+-- Generation Time: Dec 29, 2022 at 08:24 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -46,20 +46,6 @@ INSERT INTO `admin` (`id`, `f_name`, `email`, `password`, `status`, `created_at`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `appointments`
---
-
-CREATE TABLE `appointments` (
-  `id` int(11) NOT NULL,
-  `pat_id` int(11) NOT NULL,
-  `hosp_id` int(11) NOT NULL,
-  `status` int(11) DEFAULT 0,
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `bookings`
 --
 
@@ -89,18 +75,6 @@ INSERT INTO `bookings` (`id`, `P_name`, `email`, `number`, `p_id`, `hos_id`, `v_
 (20, 'Zoya Khan', 'zoya@gmail.com', '4356456', 7, 2, 3, '2022-12-27', '23:58:00', 1, '2022-12-27 11:58:41'),
 (21, 'Shafaq Fatima', 'shafaq@gmail.com', '92215443884', 4, 3, 2, '2022-12-27', '00:23:00', 0, '2022-12-27 12:23:27'),
 (22, 'Zoya Khan', 'zoya@gmail.com', '', 7, 3, 1, '2022-12-28', '13:33:00', 0, '2022-12-27 12:33:03');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `booking_status`
---
-
-CREATE TABLE `booking_status` (
-  `id` int(11) NOT NULL,
-  `status_id` int(11) NOT NULL,
-  `status` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -135,9 +109,8 @@ INSERT INTO `hospital` (`id`, `name`, `email`, `password`, `address`, `cont_numb
 (8, 'Anum Hospital', 'anumh@gmail.com', 'annnn12', ' C24/76, Khokhrapar Number 2, Pak Kausar Town, Malir', 2165654, 'Karachi', 1, '2022-12-23 20:16:49'),
 (9, 'Taj Medical Complex Hospital', 'tmch@gmail.com', 'bvbvc54', 'Opposite Capri Cinema Central Jacob Lines, M. A. Jinnah Road, Saddar', 2147483647, 'Karachi', 1, '2022-12-23 20:16:49'),
 (10, 'Karachi Medical Complex Consultants Clinic', 'kmccc@gmail.com', 'kfiosd', 'Rae Ave, Block 16, Gulshan e Iqbal, Karachi', 2147483647, 'Karachi', 1, '2022-12-23 20:16:49'),
-(11, 'Altamash General Hospital', 'agh@gmail.com', 'terrfd', 'ST-9/A, block 1 clifton, Clifton, Karachi', 3535345, 'Karachi', 2, '2022-12-23 20:16:49'),
-(12, 'Dr. Ziauddin Hospital', 'dzh@gmail.com', 'ziazia1212', ' North Nazimabad Campus', 2147483647, 'Karachi', 1, '2022-12-27 11:31:33'),
-(13, 'eterg', 'klj@gmail.com', '3221', ' North Nazimabad Campus', 6456894, 'karachi', 1, '2022-12-27 12:37:13');
+(11, 'Altamash General Hospital', 'agh@gmail.com', 'terrfd', 'ST-9/A, block 1 clifton, Clifton, Karachi', 3535345, 'Karachi', 1, '2022-12-23 20:16:49'),
+(12, 'Dr. Ziauddin Hospital', 'dzh@gmail.com', 'ziazia1212', ' North Nazimabad Campus', 2147483647, 'Karachi', 1, '2022-12-27 11:31:33');
 
 -- --------------------------------------------------------
 
@@ -153,6 +126,13 @@ CREATE TABLE `message` (
   `message` text NOT NULL,
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`id`, `Name`, `email`, `phone`, `message`, `created_at`) VALUES
+(1, 'Laiba Khan', 'laiba@mail.com', 2147483647, 'Vaccination for children available?', '2022-12-29 23:35:21');
 
 -- --------------------------------------------------------
 
@@ -186,27 +166,7 @@ INSERT INTO `patients` (`id`, `f_name`, `l_name`, `email`, `pass`, `age`, `gende
 (6, 'Saad', 'Islam', 'saad@gmail.com', '00000', 21, '0', '2022', 'Model Colony', 938782347, '2022-12-11 19:56:47'),
 (7, 'Zoya', 'Khan', 'zoya@gmail.com', '1234', 26, 'Female', '1998-02-13', 'nazimad Karachi', 324566677, '2022-12-13 16:39:45'),
 (8, 'John', 'Naver', 'naver@gmail.com', 'naver34', 35, 'Male', '1980-02-10', 'Saddar', 2147483647, '2022-12-16 20:04:07'),
-(9, 'Waqas', 'Ali', 'wq12@gmail.com', 'qwrr', 24, '', '1998-09-08', 'Opp.Arambagh Masjid Shahrah-e-Liaquat,karachi', 2147483647, '2022-12-23 18:35:45'),
-(10, '', '', '', '', 0, '', '', '', 0, '2022-12-27 12:27:12');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pat_list`
---
-
-CREATE TABLE `pat_list` (
-  `id` int(11) NOT NULL,
-  `f_name` varchar(255) NOT NULL,
-  `l_name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` int(255) NOT NULL,
-  `age` int(11) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `address` text NOT NULL,
-  `m_number` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(9, 'Waqas', 'Ali', 'wq12@gmail.com', 'qwrr', 24, 'Male', '1998-09-08', 'Opp.Arambagh Masjid Shahrah-e-Liaquat,karachi', 2147483647, '2022-12-23 18:35:45');
 
 -- --------------------------------------------------------
 
@@ -242,14 +202,6 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `appointments`
---
-ALTER TABLE `appointments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pat_id` (`pat_id`),
-  ADD KEY `hosp_id` (`hosp_id`);
-
---
 -- Indexes for table `bookings`
 --
 ALTER TABLE `bookings`
@@ -257,12 +209,6 @@ ALTER TABLE `bookings`
   ADD KEY `p_id` (`p_id`),
   ADD KEY `hos_id` (`hos_id`),
   ADD KEY `v_id` (`v_id`);
-
---
--- Indexes for table `booking_status`
---
-ALTER TABLE `booking_status`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hospital`
@@ -283,12 +229,6 @@ ALTER TABLE `patients`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pat_list`
---
-ALTER TABLE `pat_list`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `vaccine`
 --
 ALTER TABLE `vaccine`
@@ -305,22 +245,10 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `appointments`
---
-ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT for table `booking_status`
---
-ALTER TABLE `booking_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hospital`
@@ -332,7 +260,7 @@ ALTER TABLE `hospital`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `patients`
@@ -341,21 +269,8 @@ ALTER TABLE `patients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `pat_list`
---
-ALTER TABLE `pat_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `appointments`
---
-ALTER TABLE `appointments`
-  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`pat_id`) REFERENCES `patients` (`id`),
-  ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`hosp_id`) REFERENCES `hospital` (`id`);
 
 --
 -- Constraints for table `bookings`
